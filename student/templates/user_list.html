@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Oswald:500');
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .thx {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 15px;
+        }
+
+        nav {
+            width: 100%;
+            position: fixed;
+            text-align: center;
+            background-color: #16151b;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav a {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #dcedf0;
+            margin: 0 15px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        nav a:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: #e81010;
+            top: 47%;
+            animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+        }
+
+        nav a:hover:before {
+            animation: in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+
+        }
+
+        @keyframes in {
+            0% {
+                width: 0;
+                left: 0;
+                right: auto;
+            }
+
+            100% {
+                left: 0;
+                right: auto;
+                width: 100%;
+            }
+        }
+
+        @keyframes out {
+            0% {
+                width: 100%;
+                left: auto;
+                right: 0;
+            }
+
+            100% {
+                width: 0;
+                left: auto;
+                right: 0;
+            }
+        }
+
+        @keyframes show {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply styles to the submit button */
+        button[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 16px 20px;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        /* Set a max width for the button on larger screens */
+        @media screen and (min-width: 480px) {
+            button[type="submit"] {
+                width: auto;
+            }
+        }
+
+        button[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 16px 20px;
+            /* Adjust padding as needed */
+            width: 100%;
+            /* Make the button width 100% initially */
+        }
+
+        /* Set a max width for the button on larger screens */
+        @media screen and (min-width: 480px) {
+            button[type="submit"] {
+                width: auto;
+            }
+        }
+
+        button[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 16px 20px;
+            /* Adjust padding as needed */
+            width: 100%;
+            /* Make the button width 100% initially */
+        }
+
+
+        @media screen and (min-width: 480px) {
+            button[type="submit"] {
+                max-width: 200px;
+                /* Adjust max width as needed */
+                padding: 16px 20px;
+                /* Adjust padding as needed */
+                width: auto;
+                /* Reset width to auto for larger screens */
+            }
+        }
+
+
+
+
+
+
+        button[type="submit"]:hover {
+            background-color: #083b5d;
+        }
+
+        /* Add animation to the submit button */
+        button[type="submit"]:focus {
+            animation: buttonScale 0.5s ease-in-out infinite;
+        }
+
+        @keyframes buttonScale {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        #n {
+            background-color: transparent;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #dcedf0;
+            margin: 0 15px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            position: relative;
+            /* display: inline-block; */
+        }
+
+
+
+
+
+
+
+
+
+
+        /* Add your CSS styles here */
+
+        /* body {
+            font-family: Arial, sans-serif;
+        } */
+
+        h1 {
+            margin-top: 50px;
+
+            color: #333;
+        }
+
+        body {
+            background-color: #b2bec3;
+            text-align: center;
+            /* Center-align page content */
+        }
+
+        /* Table styles */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 60px;
+            overflow: auto;
+            padding-bottom: 10px;
+
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+            /* Center-align table content */
+            background-color: rgba(252, 247, 247, 0.875);
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ed9696;
+            /* Hover effect color */
+            cursor: pointer;
+        }
+
+        /* Base styles for all devices */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Styles for devices with a width up to 600px */
+        @media (max-width: 600px) {
+
+            /* Adjust styles for smaller screens */
+            body {
+                font-size: 16px;
+            }
+
+            /* Modify other styles as needed for smaller screens */
+        }
+
+        /* Styles for devices with a width between 601px and 1024px */
+        @media (min-width: 601px) and (max-width: 1024px) {
+
+            /* Adjust styles for medium-sized screens */
+            body {
+                font-size: 18px;
+            }
+
+            /* Modify other styles as needed for medium-sized screens */
+        }
+
+        /* Styles for devices with a width greater than 1024px */
+        @media (min-width: 1025px) {
+
+            /* Adjust styles for larger screens */
+            body {
+                font-size: 20px;
+            }
+
+            /* Modify other styles as needed for larger screens */
+        }
+
+        footer {
+            padding: 20px;
+            background-color: #333;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 0;
+        }
+
+        #a {
+            color: white;
+
+        }
+
+        #n {
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #dcedf0;
+            margin: 0 15px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            background: transparent;
+
+        }
+
+
+
+        .container {
+            margin-top: 40px;
+        }
+
+
+
+
+
+
+
+
+        /* Apply styles to the submit button */
+        button[type="submit"] {
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 16px 20px;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        /* Set a max width for the button on larger screens */
+        @media screen and (min-width: 480px) {
+            button[type="submit"] {
+                width: auto;
+            }
+        }
+
+        .row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* Style for the course dropdown */
+
+
+
+        /* Add animation to selected option */
+
+        @keyframes optionBackground {
+            0% {
+                background-color: #f8f9fa;
+            }
+
+            50% {
+                background-color: #000000;
+            }
+
+            100% {
+                background-color: #f8f9fa;
+            }
+        }
+
+        #kanhu {
+            padding-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            color: #dcedf0;
+            font-weight: 400;
+        }
+
+        /* Your existing CSS styles */
+        /* Style for the search container */
+        .search-container {
+            /* top: 60px;
+            margin-top: 50px; */
+            text-align: center;
+        }
+
+        /* Style for the search input */
+        #searchInput {
+            padding: 10px;
+            width: 60%;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style for the search input placeholder */
+        #searchInput::placeholder {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        #se {
+            padding-top: 80px;
+        }
+
+
+
+
+        button[type="submit"] {
+
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 11px 20px;
+            background-color: #3498db;
+            width: 100%;
+            max-width: 200px;
+            border-radius: 6px;
+        }
+
+        /* Set a max width for the button on larger screens */
+        @media screen and (min-width: 480px) {
+            button[type="submit"] {
+                width: auto;
+            }
+        }
+
+        /* Add hover effect */
+        button[type="submit"]:hover {
+            background-color: #083b5d;
+        }
+
+        /* Add animation to the submit button */
+        button[type="submit"]:focus {
+            animation: buttonScale 0.5s ease-in-out infinite;
+        }
+
+        @keyframes buttonScale {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        #searchInput {
+            background-color: #dcedf0;
+        }
+
+
+        .delete-button {
+            background-color: #ff0000;
+            /* Red background color */
+            color: #fff;
+            /* White text color */
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            /* Smooth transition for background color change */
+        }
+
+        /* Define the animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Apply the animation on hover */
+        .delete-button:hover {
+            animation: pulse 0.5s infinite;
+            /* Apply the 'pulse' animation on hover */
+        }
+
+        .kanhu {
+            top: 100px;
+        }
+        .a {
+            color: red;
+            font-family: helvetica;
+            text-decoration: none;
+
+        }
+
+        .a:hover {
+            text-decoration: underline;
+        }
+
+        .a:active {
+            color: black;
+        }
+
+        .a:visited {
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back"></div>
+    <nav>
+
+        <a href="/user_list/" type="submit">
+            User List
+        </a>
+
+
+        <a href="">
+            <form action="/show/" method="post">
+                {% csrf_token %}
+                <button type="submit" id="n">SHOW ALL DATA</button>
+            </form>
+        </a>
+        <a href="/student/">create user
+
+        </a>
+        <a href="/logout/" type="submit">LOGOUT </a>
+    </nav>
+    <br>
+
+
+
+    <h1>User List</h1>
+    <div class="kanhu">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+
+    <div class="search-container">
+        <form method="post" action="show_data/">
+            {% csrf_token %}
+
+            <input type="text" id="searchInput" placeholder="Search for User Phone Number.." name='user_mobile'>
+            <button id="bt" type="submit">SEARCH</button>
+        </form>
+    </div>
+    <a href="{% url 'export_data_to_excel2' %}" download="exported_data.xlsx">Download Excel</a>
+
+
+    <br>
+    <br>
+    <table border="1">
+
+        {% csrf_token %}
+        
+        <thead>
+            <tr>
+                <th>count</th>
+                <th>User Mobile/ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>
+                    <a class="a" href="{% url 'user_detail' user.username %}">{{ user.username }}</a>
+                </td>
+
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.last_name }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <form method="post" action="{% url 'delete_user' user.username %}" name="{{ user.username }}">
+                        {% csrf_token %}
+                        <button type="button" onclick="confirmDelete('{{ user.username }}')"
+                            class="delete-button">Delete</button>
+                    </form>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+<footer>
+    <div class="footer-content">
+        <a href="https://www.instagram.com/kanhu_pasayat/" id="a">
+            <p>&copy; 2023 Created By Kanhu Pasayat
+                <a href="https://www.instagram.com/kanhu_pasayat/" class="fa fa-instagram"></a>
+
+            </p>
+        </a>
+    </div>
+</footer>
+<script>
+    function confirmDelete(username) {
+        if (confirm('Are you sure you want to delete user ' + username + '?')) {
+            // If the user confirms, submit the form
+            document.forms[username].submit();
+        }
+    }
+</script>
+
+
+</html>

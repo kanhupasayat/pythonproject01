@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>user Student</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Oswald:500');
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .thx {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 15px;
+        }
+
+        nav {
+            width: 100%;
+            position: fixed;
+            text-align: center;
+            background-color: #16151b;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav a {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #dcedf0;
+            margin: 0 15px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        nav a:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: #e81010;
+            top: 47%;
+            animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+        }
+
+        nav a:hover:before {
+            animation: in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+
+        }
+
+        @keyframes in {
+            0% {
+                width: 0;
+                left: 0;
+                right: auto;
+            }
+
+            100% {
+                left: 0;
+                right: auto;
+                width: 100%;
+            }
+        }
+
+        @keyframes out {
+            0% {
+                width: 100%;
+                left: auto;
+                right: 0;
+            }
+
+            100% {
+                width: 0;
+                left: auto;
+                right: 0;
+            }
+        }
+
+        @keyframes show {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply styles to the submit button */
+        button[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 16px 20px;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        /* Set a max width for the button on larger screens */
+        @media screen and (min-width: 480px) {
+            button[type="submit"] {
+                width: auto;
+            }
+        }
+
+        button[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 16px 20px;
+            /* Adjust padding as needed */
+            width: 100%;
+            /* Make the button width 100% initially */
+        }
+
+        /* Set a max width for the button on larger screens */
+        @media screen and (min-width: 480px) {
+            button[type="submit"] {
+                width: auto;
+            }
+        }
+
+        button[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 16px 20px;
+            /* Adjust padding as needed */
+            width: 100%;
+            /* Make the button width 100% initially */
+        }
+
+
+        @media screen and (min-width: 480px) {
+            button[type="submit"] {
+                max-width: 200px;
+                /* Adjust max width as needed */
+                padding: 16px 20px;
+                /* Adjust padding as needed */
+                width: auto;
+                /* Reset width to auto for larger screens */
+            }
+        }
+
+
+
+
+
+
+        button[type="submit"]:hover {
+            background-color: #083b5d;
+        }
+
+        /* Add animation to the submit button */
+        button[type="submit"]:focus {
+            animation: buttonScale 0.5s ease-in-out infinite;
+        }
+
+        @keyframes buttonScale {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        #n {
+            background-color: transparent;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #dcedf0;
+            margin: 0 15px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            position: relative;
+            /* display: inline-block; */
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Body styles */
+        body {
+            background-color: #b2bec3;
+            text-align: center;
+            /* Center-align page content */
+        }
+
+        /* Style the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            background-color: white;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        /* Style table header */
+        th {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Style table rows */
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Style table cells */
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* Add responsive styles */
+        @media screen and (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+
+            th,
+            td {
+                padding: 8px;
+            }
+
+            th,
+            td:nth-child(1) {
+                display: none;
+                /* Hide the first column on smaller screens */
+            }
+
+            tr:nth-child(even) {
+                background-color: transparent;
+                /* Remove background color on even rows */
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .container {
+            margin-top: 40px;
+        }
+
+
+
+
+
+
+
+
+        /* Apply styles to the submit button */
+        button[type="submit"] {
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 16px 20px;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        /* Set a max width for the button on larger screens */
+        @media screen and (min-width: 480px) {
+            button[type="submit"] {
+                width: auto;
+            }
+        }
+
+        .row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* Style for the course dropdown */
+
+
+
+        /* Add animation to selected option */
+
+        @keyframes optionBackground {
+            0% {
+                background-color: #f8f9fa;
+            }
+
+            50% {
+                background-color: #000000;
+            }
+
+            100% {
+                background-color: #f8f9fa;
+            }
+        }
+
+        #kanhu {
+            padding-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            color: #dcedf0;
+            font-weight: 400;
+        }
+
+        /* Your existing CSS styles */
+        /* Style for the search container */
+        .search-container {
+            /* top: 60px;
+margin-top: 50px; */
+            text-align: center;
+        }
+
+        /* Style for the search input */
+        #searchInput {
+            padding: 10px;
+            width: 60%;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style for the search input placeholder */
+        #searchInput::placeholder {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        #se {
+            padding-top: 80px;
+        }
+
+
+
+
+
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 0;
+        }
+
+        #a {
+            color: white;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back"></div>
+    <nav>
+
+        <a href="/user_list/" type="submit">
+            User List
+        </a>
+
+
+        <a href="">
+            <form action="show/" method="post">
+                {% csrf_token %}
+                <button type="submit" id="n">SHOW ALL DATA</button>
+            </form>
+        </a>
+        <a href="/student/">create user
+
+        </a>
+        <a href="/logout/" type="submit">LOGOUT </a>
+    </nav>
+
+
+
+
+    <h1>Student Update Data</h1>
+    <table>
+        <tr>
+            <th>Current Date</th>
+            <th>Current Day</th>
+            <th>First Name</th>
+            <th>Course</th>
+            <th>Room</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+        </tr>
+        {% for student_update in student_updates %}
+        <tr>
+            <td>{{ student_update.current_date }}</td>
+            <td>{{ student_update.current_day }}</td>
+            <td>{{ student_update.user.first_name}}</td>
+            <td>{{ student_update.user_course }}</td>
+            <td>{{ student_update.user_room }}</td>
+            <td>{{ student_update.user_start }}</td>
+            <td>{{ student_update.user_end }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</body>
+<footer>
+    <div class="footer-content">
+        <a href="https://www.instagram.com/kanhu_pasayat/" id="a">
+            <p>&copy; 2023 Created By Kanhu Pasayat
+                <a href="https://www.instagram.com/kanhu_pasayat/" class="fa fa-instagram"></a>
+
+            </p>
+        </a>
+    </div>
+</footer>
+
+
+</html>

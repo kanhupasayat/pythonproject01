@@ -1,0 +1,300 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <p>Don't have an account? <a href='student/'>Sign up now</a></p>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+
+</html>  -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Oswald:500');
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+
+        body {
+            background-color: #b2bec3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+
+
+
+
+        .login-container {
+            background-color: #dcedf0;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        .input-container input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .show-password-container {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .show-password-container input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .forgot-password {
+            color: #007bff;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .forgot-password:hover {
+            color: #0056b3;
+        }
+
+        .sign-in-button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .sign-in-button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                max-width: 90%;
+            }
+        }
+
+        .show-password-container {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .show-password-container input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .messages {
+            margin-top: 30px;
+            padding: 10px;
+            text-transform: uppercase;
+
+            font-size: 20px;
+            color: #f54548;
+            list-style: none;
+            background-color: #0a3d62;
+            border-radius: 8px;
+        }
+
+        /* Add these styles for responsiveness */
+        @media (max-width: 768px) {
+            .login-container {
+                max-width: 90%;
+            }
+
+            /* Add more responsive styles as needed */
+        }
+
+        /* Styles for smaller devices (e.g., smartphones) */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .login-container {
+                padding: 10px;
+            }
+        }
+
+        .sign-in-button {
+            /* Existing styles */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sign-in-button:hover {
+            background-color: #0056b3;
+            color: #fff;
+            /* Change text color on hover */
+        }
+
+        /* Add this CSS for smooth transition */
+        #password {
+            transition: all 0.7s;
+        }
+
+
+
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 0;
+        }
+
+        #a {
+            color: white;
+
+        }
+
+        /*======forgot password====== */
+
+        .a {
+            color: red;
+            font-family: helvetica;
+            text-decoration: none;
+        }
+
+        .a:hover {
+            text-decoration: underline;
+        }
+
+        .a:active {
+            color: black;
+        }
+
+        .a:visited {
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+            <div class="input-container">
+                <input type="text" placeholder="mobileNumber/userID" id="username" name="username" required>
+            </div>
+            <div class="input-container">
+                <input type="password" placeholder="Password" id="password" name="password" required>
+            </div>
+            <div class="show-password-container">
+                <input type="checkbox" id="show-password">
+                <label for="show-password">Show Password</label>
+            </div>
+            <div class="show-password-container">
+                <a class="a" href="{% url 'password_reset' %}">Forgot Password?</a>
+            </div>
+            <button class="sign-in-button" type="submit">Sign In</button>
+            <br>
+        </form>
+    </div>
+
+
+    </div>
+
+    </section>
+    <footer>
+        <div class="footer-content">
+            <a href="https://www.instagram.com/kanhu_pasayat/" id="a">
+                <p>&copy; 2023 Created By Kanhu Pasayat
+                    <a href="https://www.instagram.com/kanhu_pasayat/" class="fa fa-instagram"></a>
+
+                </p>
+            </a>
+        </div>
+    </footer>
+
+
+</body>
+<!-- Add this JavaScript code inside the <script> element -->
+<script>
+    const passwordInput = document.getElementById('password');
+    const showPasswordCheckbox = document.getElementById('show-password');
+
+    showPasswordCheckbox.addEventListener('change', function () {
+        if (showPasswordCheckbox.checked) {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    });
+</script>
+
+</html>

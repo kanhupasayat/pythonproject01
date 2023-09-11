@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Oswald:500');
+
+        /* Your CSS styles here */
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .thx {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 15px;
+        }
+
+        nav {
+            top: 0;
+            width: 100%;
+            position: fixed;
+            text-align: center;
+            background-color: #16151b;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav a {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #dcedf0;
+            margin: 0 15px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        nav a:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: #e81010;
+            top: 47%;
+            animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+        }
+
+        nav a:hover:before {
+            animation: in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+
+        }
+
+        @keyframes in {
+            0% {
+                width: 0;
+                left: 0;
+                right: auto;
+            }
+
+            100% {
+                left: 0;
+                right: auto;
+                width: 100%;
+            }
+        }
+
+        @keyframes out {
+            0% {
+                width: 100%;
+                left: auto;
+                right: 0;
+            }
+
+            100% {
+                width: 0;
+                left: auto;
+                right: 0;
+            }
+        }
+
+        @keyframes show {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply styles to the submit button */
+        button[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 16px 20px;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        /* Set a max width for the button on larger screens */
+        @media screen and (min-width: 480px) {
+            button[type="submit"] {
+                width: auto;
+            }
+        }
+
+        button[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 16px 20px;
+            /* Adjust padding as needed */
+            width: 100%;
+            /* Make the button width 100% initially */
+        }
+
+        /* Set a max width for the button on larger screens */
+        @media screen and (min-width: 480px) {
+            button[type="submit"] {
+                width: auto;
+            }
+        }
+
+        button[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 16px 20px;
+            /* Adjust padding as needed */
+            width: 100%;
+            /* Make the button width 100% initially */
+        }
+
+
+        @media screen and (min-width: 480px) {
+            button[type="submit"] {
+                max-width: 200px;
+                /* Adjust max width as needed */
+                padding: 16px 20px;
+                /* Adjust padding as needed */
+                width: auto;
+                /* Reset width to auto for larger screens */
+            }
+        }
+
+
+
+
+
+
+        button[type="submit"]:hover {
+            background-color: #083b5d;
+        }
+
+        /* Add animation to the submit button */
+        button[type="submit"]:focus {
+            animation: buttonScale 0.5s ease-in-out infinite;
+        }
+
+        @keyframes buttonScale {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        #n {
+            background-color: transparent;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #dcedf0;
+            margin: 0 15px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            position: relative;
+            /* display: inline-block; */
+        }
+
+
+
+
+
+
+        body {
+
+            background-color: #b2bec3;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signup-container {
+            background-color: #dcedf0;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            margin: 50px;
+        }
+
+        .signup-container h2 {
+            padding-top: 80px;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        .input-container input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .signup-button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .signup-button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .signup-container {
+                max-width: 90%;
+            }
+        }
+
+        .messages {
+            margin-top: 30px;
+            padding: 10px;
+            text-transform: uppercase;
+
+            font-size: 20px;
+            color: #f8495d;
+            list-style: none;
+            background-color: #0a3d62;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            /* position: absolute; */
+            bottom: 0;
+            width: 100%;
+
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 0;
+        }
+
+        #a {
+            color: white;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back"></div>
+    <nav>
+
+        <a href="/user_list/" type="submit">
+            User List
+        </a>
+
+
+        <a href="">
+            <form action="/show/" method="post">
+                {% csrf_token %}
+                <button type="submit" id="n">SHOW ALL DATA</button>
+            </form>
+        </a>
+        <a href="/student/">create user
+
+        </a>
+        <a href="/logout/" type="submit">LOGOUT </a>
+    </nav>
+    <div class="signup-container">
+        <h2>Regester form</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                    {% endfor %}
+            </ul>
+            {% endif %}
+            <div class="input-container">
+                <input type="text" placeholder="First Name" id="first-name" name="first_name" required>
+            </div>
+            <div class="input-container">
+                <input type="text" placeholder="Last Name" id="last-name" name="last_name" required>
+            </div>
+            <div class="input-container">
+                <input type="tel" id="mobileNumber" name="username" placeholder="Enter your mobile number" required>
+            </div>
+
+            <div class="input-container">
+                <input type="password" placeholder="Password" id="password" name="password" required>
+            </div>
+            <div class="input-container">
+                <input type="email" placeholder="Email" id="email" name="email" required>
+            </div>
+
+
+
+
+            <p>Already have an account? <a href="/">Sign in</a></p>
+            <button class="signup-button" type="submit">Regester</button>
+        </form>
+    </div>
+</body>
+<footer>
+    <div class="footer-content">
+        <a href="https://www.instagram.com/kanhu_pasayat/" id="a">
+            <p>&copy; 2023 Created By Kanhu Pasayat
+                <a href="https://www.instagram.com/kanhu_pasayat/" class="fa fa-instagram"></a>
+
+            </p>
+        </a>
+    </div>
+</footer>
+<script>
+    alert("note that you  MobileNumber/UserID and password")
+</script>
+</ </html>

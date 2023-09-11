@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Update Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Oswald:500');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+
+        }
+
+        button[type="submit"]:hover {
+            background-color: #083b5d;
+        }
+
+        /* Add animation to the submit button */
+        button[type="submit"]:focus {
+            animation: buttonScale 0.5s ease-in-out infinite;
+        }
+
+        @keyframes buttonScale {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+
+        h2 {
+            font-size: 24px;
+            color: #007BFF;
+            /* Change header text color */
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        #id_email{
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+
+        }
+
+        /* Style form input fields */
+        form input[type="text"],
+        form input[type="password"]
+        form input[type="email"] {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+
+        footer {
+            background-color: #333;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 0;
+        }
+
+        #a {
+            color: white;
+
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 20px;
+                /* Adjust the font size for smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Update Your Profile</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
+
+    <footer>
+        <div class="footer-content">
+            <a href="https://www.instagram.com/kanhu_pasayat/" id="a">
+                <p>&copy; 2023 Created By Kanhu Pasayat
+                    <a href="https://www.instagram.com/kanhu_pasayat/" class="fa fa-instagram"></a>
+                </p>
+            </a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

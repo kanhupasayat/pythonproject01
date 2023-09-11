@@ -1,0 +1,152 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Get User Location</title>
+</head>
+
+<body>
+    <button onclick="getLocation()">Get My Location</button>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            // Display latitude and longitude
+            alert("Latitude: " + position.coords.latitude +
+                "\nLongitude: " + position.coords.longitude);
+
+            // You can also send these coordinates to your Python web app's server using AJAX.
+            // Example: sendCoordinatesToServer(position.coords.latitude, position.coords.longitude);
+        }
+    </script>
+</body>
+
+</html>  -->
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Get User Location</title>
+    <style>
+        /* Add some basic styling */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Submit Button with Location Check</h1>
+        <button id="submitButton" onclick="checkLocation()">Submit</button>
+
+        <script>
+            // Define the predefined location (latitude and longitude)
+            const predefinedLocation = {
+                latitude:12.901679,  
+                // 12.916162367653357    
+                longitude: 77.610917
+
+                // 77.61561356676579 
+            };
+
+            // Function to check if the user's location matches the predefined location
+            function checkLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        const userLocation = {
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude
+                        };
+
+                        // Check if the user's location matches the predefined location
+                        if (isLocationMatch(userLocation, predefinedLocation)) {
+                            // Location matches, allow the submit button to work
+                            alert("Location matches. Submit button will work.");
+                            // You can submit the form or perform other actions here
+                        } else {
+                            // Location does not match, prevent the submit button from working
+                            alert("Location does not match. Submit button will not work.");
+                            // You can prevent the form submission or display an error message here
+                        }
+                    });
+                } else {
+                    alert("Geolocation is not supported by this browser.");
+                }
+            }
+
+            // Function to check if two locations match
+            function isLocationMatch(location1, location2) {
+                return (
+                    location1.latitude === location2.latitude &&
+                    location1.longitude === location2.longitude
+                );
+            }
+        </script>
+    </div>
+</body>
+
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Get User Location</title>
+</head>
+
+<body>
+    <button onclick="getLocation()">Get My Location</button>
+
+    <form method="post" id="locationForm">
+        {% csrf_token %}
+        <input type="hidden" name="user_location" id="userLocationInput">
+        <button type="submit" id="submitButton" disabled>Submit</button>
+    </form>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            // Display latitude and longitude
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            var userLocationInput = document.getElementById('userLocationInput');
+            var submitButton = document.getElementById('submitButton');
+
+            userLocationInput.value = latitude + "," + longitude;
+
+            // Enable the submit button
+            submitButton.disabled = false;
+        }
+    </script>
+</body>
+
+</html> -->
+

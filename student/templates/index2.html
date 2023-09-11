@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
+    <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+    <title>student home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Oswald:500');
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        h2 {
+            color: #333;
+            padding: 7px;
+        }
+
+        .back {
+            position: fixed;
+            left: 0;
+            top: 0;
+            background-size: cover;
+        }
+
+        .thx {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 15px;
+        }
+
+        nav {
+            width: 100%;
+            position: fixed;
+            text-align: center;
+            height: 60px;
+            background-color: #16151b;
+        }
+
+        nav a {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #dcedf0;
+            margin: 12px 15px;
+            font-size: 16px;
+            padding: 5px;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        #n {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #dcedf0;
+            margin: 0 15px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            background-color: transparent;
+
+        }
+
+
+        nav a:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: #e81010;
+            top: 47%;
+            animation: out 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+        }
+
+        nav a:hover:before {
+            animation: in 0.2s cubic-bezier(1, 0, 0.58, 0.97) 1 both;
+
+        }
+
+        @keyframes in {
+            0% {
+                width: 0;
+                left: 0;
+                right: auto;
+            }
+
+            100% {
+                left: 0;
+                right: auto;
+                width: 100%;
+            }
+        }
+
+        @keyframes out {
+            0% {
+                width: 100%;
+                left: auto;
+                right: 0;
+            }
+
+            100% {
+                width: 0;
+                left: auto;
+                right: 0;
+            }
+        }
+
+        @keyframes show {
+            0% {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        .welcome-section {
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .welcome-section h2 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #333;
+            padding: 18px;
+        }
+
+        /* Add responsive styles */
+        @media screen and (max-width: 768px) {
+            .welcome-section {
+                max-width: 90%;
+            }
+
+            .welcome-section h2 {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width:768px) {
+            nav{
+                max-width: 100%;
+                height: 109px;
+                padding-bottom: 30px;
+            }
+            
+        }
+
+
+
+
+
+
+        .time-label {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Define the animation for the time inputs */
+        .time-input {
+            animation: slideIn 1s ease-in-out;
+        }
+
+        /* Keyframes for the fadeIn animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Keyframes for the slideIn animation */
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+
+        .date-section {
+            text-align: center;
+            margin-top: 40px;
+            font-size: bold;
+            color: #434648;
+        }
+
+
+        @media screen and (max-width:768px) {
+            .date-section {
+                margin-top:140px;
+            }
+            
+        }
+
+
+        /* Apply styles to the submit button */
+        button[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            padding: 16px 20px;
+            border-radius: 5px;
+            width: 300px;
+
+        }
+
+        button {
+            margin-bottom: 20px;
+        }
+
+        /* Set a max width for the button on larger screens */
+        @media screen and (min-width: 480px) {
+            button[type="submit"] {
+                width:200px;
+                margin-top: 20px;
+            }
+        }
+
+        .row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* Style for the course dropdown */
+        #job {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #dcedf0;
+            color: #434648;
+        }
+
+        /* Apply styles to optgroups and options */
+        #job optgroup {
+            font-weight: bold;
+        }
+
+        #job option {
+            padding: 8px;
+        }
+
+        /* Add hover effect */
+        #job option:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Add animation to selected option */
+        #job option:checked {
+            animation: optionBackground 1.5s ease-in-out infinite;
+        }
+
+        @keyframes optionBackground {
+            0% {
+                background-color: #f8f9fa;
+            }
+
+            50% {
+                background-color: #e84646;
+            }
+
+            100% {
+                background-color: #6df376;
+            }
+        }
+
+        legend {
+            padding: 20px;
+            color: #045664;
+            font-size: 25px;
+        }
+
+        #kanhu {
+            padding-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            color: #273c75;
+            font-weight: 400;
+        }
+
+        /* Your existing CSS styles */
+
+
+        /* Set a max width for the button on larger screens */
+        @media screen and (max-width: 480px) {
+            button[type="submit"] {
+                max-width: 200px;
+                /* Adjust max width as needed */
+                padding: 16px 20px;
+                /* Adjust padding as needed */
+                width: auto;
+                /* Reset width to auto for larger screens */
+            }
+        }
+
+        /* Add hover effect */
+        button[type="submit"]:hover {
+            background-color: #083b5d;
+        }
+
+        /* Add animation to the submit button */
+        button[type="submit"]:focus {
+            animation: buttonScale 0.5s ease-in-out infinite;
+        }
+
+        @keyframes buttonScale {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .messages {
+            text-align: center;
+            margin-top: 60px;
+            padding: 10px;
+            text-transform: uppercase;
+
+            font-size: 20px;
+            color: #3ae374;
+            list-style: none;
+            background-color: #0a3d62;
+            border-radius: 8px;
+        }
+
+        @media screen and (max-width:768px) {
+            .messages{
+                margin-top:140px;
+            }
+            
+        }
+
+        #name {
+            color: #c44569;
+            text-decoration: underline;
+            font-size: 30px;
+        }
+
+
+
+
+
+
+
+
+        /* Add responsive styles for time labels and inputs */
+        .time-label {
+            font-size: 16px;
+            /* Adjust font size for larger screens */
+            margin: 5px 0;
+            /* Add spacing between labels */
+        }
+
+        .time-input {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #dcedf0;
+            color: #434648;
+        }
+
+        /* Media query for smaller screens */
+        @media screen and (max-width: 768px) {
+            .time-label {
+                font-size: 14px;
+                /* Reduce font size for smaller screens */
+            }
+
+            .time-input {
+                padding: 8px;
+                /* Reduce padding for smaller screens */
+                font-size: 12px;
+                /* Reduce font size for smaller screens */
+            }
+        }
+
+
+
+        /* Style for the mobile number input field */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+
+            /* Adjust styles for smaller screens, e.g., tablets */
+            input[type="text"] {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            /* Adjust styles for even smaller screens, e.g., mobile phones */
+            input[type="text"] {
+                font-size: 14px;
+            }
+        }
+
+        body {
+            background-color: #b2bec3;
+        }
+
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            /* position: absolute; */
+            bottom: 0;
+            width: 100%;
+
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin: 0;
+        }
+
+        #a {
+            color: white;
+
+        }
+
+
+        /* styles.css */
+
+        /* Define the button class */
+        .custom-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            /* Add a smooth transition for scale */
+            z-index: -1;
+        }
+
+        /* Define a keyframes animation for pulsating */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.8);
+            }
+
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 20px rgba(0, 123, 255, 0.8);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.8);
+            }
+        }
+
+        /* Apply the animation to the button with the custom-button class */
+        .custom-button.animated {
+            animation: pulse 2s infinite;
+            /* Apply the pulsating animation */
+        }
+
+        /* Style the button on hover */
+        .custom-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+            /* Increase button size on hover */
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.8);
+            /* Add a subtle box shadow on hover */
+        }
+
+        #update {
+            padding-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="back"></div>
+    <nav>
+        <a href="/index2/" type="submit">HOME</a>
+
+        <a href="{% url 'update_user' user.username %}">Update Profile</a>
+
+        </a>
+        <a href="{% url 'changepassword' %}" type="submit">change_password</a>
+
+        </a>
+        <a href="/logout/" type="submit">LOGOUT </a>
+    </nav>
+
+
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="m">
+                <form method="post">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                            {% endfor %}
+                    </ul>
+                    {% endif %}
+            </div>
+            <br>
+
+
+
+            <div class="date-section">
+                <h1 class="date-info">Today's date: <span id="currentDate"></span></h1>
+                <h1 class="date-info">Today's day: <span id="currentDay"></span></h1>
+            </div>
+            <br>
+            <br>
+            <hr>
+
+
+            <div class="welcome-section">
+                {% csrf_token %}
+                <h2 id="name"> Fast Name: {{ user.first_name }}</h2>
+                <h3>Last Name: {{ user.last_name }}</h3>
+                <br>
+                <h3>Mobile Number: {{user.username}}</h3>
+                <br>
+                <h3>Email: {{ user.email }}</h3>
+                <br>
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <!-- Hidden fields for user_name and user_mobile -->
+                    <input type="hidden" name="user_name" value="{{ user.first_name }}">
+                    <input type="hidden" name="user_mobile" value="{{ user.username }}">
+
+
+
+            </div>
+
+            <br>
+            <br>
+            <hr>
+
+
+
+
+            <legend>PRACTICE SESSION</legend>
+
+            <div id="kanhu" class="time-label">
+                <label for="course">Course:</label>
+                <select id="job" required name="user_course">
+                    <optgroup label="FULL STACK">
+                        <option value="frontend_developer">Front-End Developer</option>
+                        <option value="python_developer">Python Developer</option>
+                        <option value="java_full_stack">Java Full Stack</option>
+                    </optgroup>
+                    <optgroup label="data">
+                        <option value="data_science">Data Science</option>
+                        <option value="data_analytics">Data Analytics</option>
+                        <option value="mobile_designer">Mobile Designer</option>
+                    </optgroup>
+                    <optgroup label="course">
+                        <option value="cloud computing">Cloud Computing</option>
+                        <option value="linux">Linux</option>
+                        <option value="salesforce">Salesforce</option>
+                        <option value="sql">SQL</option>
+                        <option value="linux_python">Linux/Python</option>
+                        <option value="linux_ccna">Linux/CCNA</option>
+                        <option value="ccna">CCNA</option>
+                        <option value="software_testing">Software Testing</option>
+                        <option value="python">Python</option>
+                        <option value="java">JAVA</option>
+                    </optgroup>
+                </select>
+            </div>
+            <br>
+            <br>
+            <hr>
+
+
+            <br>
+            <div id="kanhu" class="time-label">
+                <label for="room">ROOM:</label>
+                <select id="job" required name="user_room">
+                    <option value="c1">C1</option>
+                    <option value="c2">C2</option>
+                    <option value="c5">C5</option>
+                    <option value="c6">C6</option>
+                    <option value="c7">C7</option>
+                    <option value="c8">C8</option>
+                    <option value="c10">C10</option>
+                    <option value="c11">C11</option>
+                    <option value="2nd floor balcony">2nd Floor Balcony</option>
+                </select>
+
+            </div>
+            <br>
+            <br>
+
+            <hr>
+            <br>
+            <label class="time-label" for="start">Select a START time:</label>
+            <input class="time-input" required type="time" id="start" name="user_start">
+
+            <label class="time-label" for="end">Select an END time:</label>
+            <input class="time-input" required type="time" id="end" name="user_end">
+
+
+
+
+            <b>
+                <br>
+                <input type="hidden" name="current_date" id="currentDateInput">
+                <input type="hidden" name="current_day" id="currentDayInput">
+
+                <br>
+
+                <button  onclick="getLocation()"  type="submit" class="custom-button animated" >SUBMIT</button>
+
+                </form>
+
+        </div>
+
+
+
+
+    </div>
+    <footer>
+        <div class="footer-content">
+            <a href="https://www.instagram.com/kanhu_pasayat/" id="a">
+                <p>&copy; 2023 Created By Kanhu Pasayat
+                    <a href="https://www.instagram.com/kanhu_pasayat/" class="fa fa-instagram"></a>
+
+                </p>
+            </a>
+        </div>
+    </footer>
+    <script>
+        function getDayName(dayIndex) {
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            return days[dayIndex];
+        }
+
+        function updateDateAndDay() {
+            const currentDate = new Date();
+            const dayIndex = currentDate.getDay();
+            const currentDay = getDayName(dayIndex);
+            const currentDateElement = document.getElementById('currentDate');
+            const currentDayElement = document.getElementById('currentDay');
+            const currentDateInput = document.getElementById('currentDateInput');
+            const currentDayInput = document.getElementById('currentDayInput');
+
+            currentDateElement.textContent = currentDate.toLocaleDateString();
+            currentDayElement.textContent = currentDay;
+            currentDateInput.value = currentDate.toLocaleDateString();
+            currentDayInput.value = currentDay;
+        }
+
+        window.onload = function () {
+            updateDateAndDay();
+        };
+
+        
+    </script>
+
+
+</body>
+
+</html>
