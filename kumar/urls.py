@@ -52,6 +52,9 @@ from django.http import HttpResponse
 from django.urls import path
 
 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+
     
 
 
@@ -118,6 +121,9 @@ path('update_user/<str:username>/', views.update_user, name='update_user'),
 
 
 ]
+
+
+urlpatterns+=staticfiles_urlpatterns()
 
 
 
